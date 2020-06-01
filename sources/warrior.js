@@ -8,7 +8,6 @@ class Warrior {
         this._img.frames = 3;
         this._img.frameIndex = 0;
         this._img.stay = 4;
-
         this._img.stayIndex = 0 //0:front 1:left 2:right 3:back
         
         this._w = 30;
@@ -34,16 +33,6 @@ class Warrior {
             this._w, 
             this._h
         );
-
-        if (!(this._count % 20)) {
-            if (this._img.frameIndex++ === 2) {
-                this._img.frameIndex = 0;
-            };
-        };
-
-        if (this._count++ === 100) {
-            this._count = 0;
-        };
     }
 
     move(direction) {
@@ -68,13 +57,27 @@ class Warrior {
         }
     }
 
+    animate() {
+        if (!(this._count % 10)) {
+            if (this._img.frameIndex++ === 2) {
+                this._img.frameIndex = 0;
+            };
+        };
+
+        if (this._count++ === 100) {
+            this._count = 0;
+        };
+    }
+
     _checkLimits() {
         if (this._x <= 10) {
             this._x = 10;
         } else if (this._x + this._w >= this._ctx.canvas.width - 10) {
             this._x = this._ctx.canvas.width - 10 - this._w;
-        } else if (this._y <= DINAMIC_BACKGROUND_Y ) {
-            this._y = DINAMIC_BACKGROUND_Y 
+        } else if (this._y <= LIMIT_Y + 10) {
+            this._y = LIMIT_Y + 10;
+        } else if (this._y + this._h >= this._ctx.canvas.height - 10 ) {
+            this._y = this._ctx.canvas.height - 10 - this._h;
         }
     }
  }
