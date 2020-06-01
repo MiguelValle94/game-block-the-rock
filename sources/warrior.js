@@ -7,7 +7,7 @@ class Warrior {
         this._img.src = './img/LeviSpriteC.png';
         this._img.frames = 3;
         this._img.frameIndex = 0;
-        this._img.stay = 4
+        this._img.stay = 4;
 
         this._img.stayIndex = 0 //0:front 1:left 2:right 3:back
         
@@ -19,7 +19,7 @@ class Warrior {
         this._vx = 2;
         this._vy = 2;
 
-        this._count = 0
+        this._count = 0;
     }
 
     draw() {
@@ -63,7 +63,18 @@ class Warrior {
             case 'left':
                 this._x -= this._vx;
                 this._img.stayIndex = 1;
+                console.log(this._x);
                 break; 
+        }
+    }
+
+    _checkLimits() {
+        if (this._x <= 10) {
+            this._x = 10;
+        } else if (this._x + this._w >= this._ctx.canvas.width - 10) {
+            this._x = this._ctx.canvas.width - 10 - this._w;
+        } else if (this._y <= DINAMIC_BACKGROUND_Y ) {
+            this._y = DINAMIC_BACKGROUND_Y 
         }
     }
  }
