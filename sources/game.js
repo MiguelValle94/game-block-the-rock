@@ -7,6 +7,7 @@ class Game {
         this._giant = new Giant(this._ctx);
         this._warrior = new Warrior(this._ctx);
         this._obstacle = new Obstacle(this._ctx, './img/tree.png', 20, 20);
+        this._console = new Console(this._ctx);
 
         this._setListeners();
     }
@@ -30,6 +31,7 @@ class Game {
         this._obstacle.draw();
         this._warrior.draw();
         this._drawMenu();
+        this._console.draw();
     }
 
     _drawMenu() {

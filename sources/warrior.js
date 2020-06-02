@@ -76,8 +76,8 @@ class Warrior {
             this._x = this._ctx.canvas.width - 10 - this._w;
         } else if (this._y <= LIMIT_Y + 10) {
             this._y = LIMIT_Y + 10;
-        } else if (this._y + this._h >= this._ctx.canvas.height - 10 ) {
-            this._y = this._ctx.canvas.height - 10 - this._h;
+        } else if (this._y + this._h >= this._ctx.canvas.height - 60 ) {
+            this._y = this._ctx.canvas.height - 60 - this._h;
         }
     }
  }
