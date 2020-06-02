@@ -29,8 +29,8 @@ class Game {
     _draw() {
         this._background.draw()
         this._giant.draw();  
-        this._obstacle.draw();
         this._warrior.draw();
+        this._obstacle.draw();
         this._drawMenu();
         this._console.draw();
     }
