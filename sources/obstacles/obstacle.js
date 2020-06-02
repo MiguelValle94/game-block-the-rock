@@ -20,8 +20,7 @@ class Obstacle {
     }
 
     draw() {
-        this._ctx.fillStyle = "orange";
-        this._ctx.fillRect(this._x, this._y, this._w, this._h);
+        this._ctx.drawImage(this._img, this._x, this._y, this._w, this._h);
     }
 
     move() {
@@ -29,3 +28,5 @@ class Obstacle {
         this._y += this._vy;
     }
 }
+
+

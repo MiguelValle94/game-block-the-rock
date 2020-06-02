@@ -6,13 +6,14 @@ class Game {
         this._background = new Background(this._ctx);
         this._giant = new Giant(this._ctx);
         this._warrior = new Warrior(this._ctx);
-        this._obstacle = new Obstacle(this._ctx, './img/tree.png', 20, 20);
+        this._obstacle = new GiantRock(this._ctx);
         this._console = new Console(this._ctx);
 
         this._setListeners();
     }
 
     start() {
+        
         setInterval(() => {
             this._clear();
             this._draw();
