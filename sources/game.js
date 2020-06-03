@@ -6,10 +6,9 @@ class Game {
         this._background = new Background(this._ctx);
         this._giant = new Giant(this._ctx);
         this._warrior = new Warrior(this._ctx);
-        this._obstacle = [];
         this._console = new Console(this._ctx);
+        this._round = new Round(this._ctx);
 
-        this._round = 1
         this._counter = 0
 
         this._setListeners();
@@ -17,12 +16,13 @@ class Game {
 
     start() {
         setInterval(() => {
+            console.log(this._warrior.health)
             this._clear();
-            this._newObstacle();
+            this._round.newObstacle();
             this._draw();
             this._checkLimits();
+            this._checkColisions();
             this._move();
-            this._counter++;
         }, 1000 / 60); 
     }
 
@@ -34,8 +34,9 @@ class Game {
         this._background.draw();
         this._giant.draw();  
         this._warrior.draw();
-        this._obstacle.forEach( obs => obs.draw());
+        this._round.obstacle.forEach( obs => obs.draw());
         this._drawMenu();
+        this._round.draw();
         this._console.draw();
     }
 
@@ -47,27 +48,7 @@ class Game {
     }
 
     _move() {
-        this._obstacle.forEach( obs => obs.move());
-    }
-
-    _newObstacle() {
-        const obstacles = [new Apple(this._ctx), new Rock(this._ctx), new GiantRock(this._ctx), new Hand(this._ctx)];
-        
-        if (this._counter === 200) {
-            this._counter = 0;
-            this._obstacle = [];
-            this._round++;
-        }
-
-        if (this._round === 5) {
-            const randomObstacle = Math.floor(Math.random * obstacles.length);
-            this._obstacle.push(obstacles[randomObstacle]);
-            return
-        }
-
-        if (!(this._counter % 20)) {
-            this._obstacle.push(obstacles[this._round - 1]);
-        } 
+        this._round.obstacle.forEach( obs => obs.move());
     }
 
     _checkLimits() {
@@ -75,11 +56,28 @@ class Game {
     }
 
     _checkColisions() {
-        // this._obstacle.forEach(obs => {
-        //     if (obs._y + obs._h == this._warrior._y) {
-        //         if (obs._x < this._warrior._x )
-        //     }
-        // }) 
+        this._round.obstacle.forEach(o => {
+           if (o.noFloor) {
+                const colisionY = this._warrior.y <= o.y + o.h && this._warrior.y >= o.y && o.y >= o.finalY - this._warrior.h - o.h;
+                const colisionX = this._warrior.x < o.x + o.w && this._warrior.x + this._warrior.w > o.x;
+                if (colisionY && colisionX) {
+                    this._decreaseLife(o);
+                }
+           }
+        })
+    }
+
+    _decreaseLife(obstacle) {
+        obstacle.noCrash = false
+        this._warrior.health -= obstacle.damage;
+    }
+
+    _checkDeath() {
+        if (this._warrior.health <= 0) {
+            this._gameOver();
+        } else if (this._giant.life === 0) {
+            this._youWin();
+        }
     }
 
     _setListeners() {

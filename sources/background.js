@@ -28,6 +28,6 @@ class Background {
     }
 
     _drawLimits() {
-        this._ctx.drawImage(this._limitsImg, this._limitX, this._limitY, this._limitW, this._limitH);        
+        this._ctx.drawImage(this._limitsImg, this._limitX, this._limitY, this._limitW + 100, this._limitH);        
     }
 }
