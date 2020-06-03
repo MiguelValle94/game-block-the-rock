@@ -20,6 +20,12 @@ class Obstacle {
     }
 
     draw() {
+        this._ctx.fillStyle = 'rgba(46, 38, 38, 0.4)'
+        this._ctx.beginPath();
+        this._ctx.ellipse(this._finalX + this._w / 2, this._finalY + this._h * 2 / 3, this._w - this._w / 3, this._h / 2 - this._h / 4, 0, 0, 2 * Math.PI);
+        this._ctx.fill();
+        this._ctx.closePath();
+
         this._ctx.drawImage(this._img, this._x, this._y, this._w, this._h);
     }
 

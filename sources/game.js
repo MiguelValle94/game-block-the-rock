@@ -53,7 +53,7 @@ class Game {
     _newObstacle() {
         const obstacles = [new Apple(this._ctx), new Rock(this._ctx), new GiantRock(this._ctx), new Hand(this._ctx)];
         
-        if (this._counter === 2000) {
+        if (this._counter === 200) {
             this._counter = 0;
             this._obstacle = [];
             this._round++;
