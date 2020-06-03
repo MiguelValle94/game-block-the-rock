@@ -3,6 +3,8 @@ class Giant {
     constructor(ctx) {
         this._ctx = ctx;
 
+        this.life = 100;
+
         this._w = 150;
         this._h = LIMIT_Y - 30;
         this._x = this._ctx.canvas.width / 2 - this._w / 2;

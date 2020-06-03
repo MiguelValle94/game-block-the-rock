@@ -3,6 +3,8 @@ class Warrior {
     constructor(ctx) {
         this._ctx = ctx;
 
+        this.life = 100;
+
         this._img = new Image();
         this._img.src = './img/LeviSpriteC.png';
         this._img.frames = 3;

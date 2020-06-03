@@ -6,19 +6,23 @@ class Game {
         this._background = new Background(this._ctx);
         this._giant = new Giant(this._ctx);
         this._warrior = new Warrior(this._ctx);
-        this._obstacle = new GiantRock(this._ctx);
+        this._obstacle = [];
         this._console = new Console(this._ctx);
+
+        this._round = 1
+        this._counter = 0
 
         this._setListeners();
     }
 
     start() {
-        
         setInterval(() => {
             this._clear();
+            this._newObstacle();
             this._draw();
             this._checkLimits();
             this._move();
+            this._counter++;
         }, 1000 / 60); 
     }
 
@@ -27,10 +31,10 @@ class Game {
     }
 
     _draw() {
-        this._background.draw()
+        this._background.draw();
         this._giant.draw();  
         this._warrior.draw();
-        this._obstacle.draw();
+        this._obstacle.forEach( obs => obs.draw());
         this._drawMenu();
         this._console.draw();
     }
@@ -43,11 +47,39 @@ class Game {
     }
 
     _move() {
-        this._obstacle.move();
+        this._obstacle.forEach( obs => obs.move());
+    }
+
+    _newObstacle() {
+        const obstacles = [new Apple(this._ctx), new Rock(this._ctx), new GiantRock(this._ctx), new Hand(this._ctx)];
+        
+        if (this._counter === 2000) {
+            this._counter = 0;
+            this._obstacle = [];
+            this._round++;
+        }
+
+        if (this._round === 5) {
+            const randomObstacle = Math.floor(Math.random * obstacles.length);
+            this._obstacle.push(obstacles[randomObstacle]);
+            return
+        }
+
+        if (!(this._counter % 20)) {
+            this._obstacle.push(obstacles[this._round - 1]);
+        } 
     }
 
     _checkLimits() {
         this._warrior._checkLimits();
+    }
+
+    _checkColisions() {
+        // this._obstacle.forEach(obs => {
+        //     if (obs._y + obs._h == this._warrior._y) {
+        //         if (obs._x < this._warrior._x )
+        //     }
+        // }) 
     }
 
     _setListeners() {
