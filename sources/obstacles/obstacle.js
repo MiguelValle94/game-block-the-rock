@@ -16,7 +16,7 @@ class Obstacle {
         this.finalY = LIMIT_Y + Math.random() * (this._ctx.canvas.height - this.h - LIMIT_Y- 50);
 
         this._vy = 0;
-        this._ay = 0.01;
+        this._ay = 0.05;
 
         this.noFloor = true;
         this.noCrash = true;

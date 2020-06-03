@@ -16,7 +16,6 @@ class Game {
 
     start() {
         setInterval(() => {
-            console.log(this._warrior.health)
             this._clear();
             this._round.newObstacle();
             this._draw();
@@ -58,7 +57,7 @@ class Game {
     _checkColisions() {
         this._round.obstacle.forEach(o => {
            if (o.noFloor) {
-                const colisionY = this._warrior.y <= o.y + o.h && this._warrior.y >= o.y && o.y >= o.finalY - this._warrior.h - o.h;
+                const colisionY = this._warrior.y <= o.y + o.h && this._warrior.y >= o.y && o.y >= o.finalY - this._warrior.h;
                 const colisionX = this._warrior.x < o.x + o.w && this._warrior.x + this._warrior.w > o.x;
                 if (colisionY && colisionX) {
                     this._decreaseLife(o);
