@@ -12,14 +12,23 @@
 <body>
     <h1>Block<br><div id="small">the</div>Rock</h1>
 
-    <div id="videogame">
+    <section id="videogame">
+        <div id="warrior-life" class="deletable">
+            <span>WARRIOR</span>    
+            <progress id="warrior" max="100" value="100"></progress>
+        </div>
+
+        <div id="giant-life" class="deletable">  
+            <progress id="giant" max="100" value="100"></progress>
+            <span>GIANT</span>  
+        </div>
         
-        <progress max="100" value="100"></progress>
-
         <canvas id="canvas" width="700" height="550">
+        </canvas> 
 
-        </canvas>  
-    </div>
+        <a id="try" href="">Try again?</a>
+
+    </section>
 
     <img id="logo" src="img/favicon.png" alt="swords icon">
 
@@ -27,6 +36,7 @@
     <script src="./sources/giant.js"></script>
     <script src="./sources/background.js"></script>
     <script src="./sources/warrior.js"></script>
+    <script src="./sources/sword.js"></script>
     <script src="./sources/obstacles/obstacle.js"></script>
     <script src="./sources/obstacles/apple.js"></script>
     <script src="./sources/obstacles/rock.js"></script>

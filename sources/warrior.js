@@ -34,7 +34,9 @@ class Warrior {
             this.y, 
             this.w, 
             this.h
-        );
+            );
+            
+            this._drawLife()
     }
 
     move(direction) {
@@ -80,5 +82,10 @@ class Warrior {
         } else if (this.y + this.h >= this._ctx.canvas.height - 60 ) {
             this.y = this._ctx.canvas.height - 60 - this.h;
         }
+    }
+
+    _drawLife() {
+        const warriorLife = document.getElementById('warrior');
+        warriorLife.value = this.health;
     }
  }

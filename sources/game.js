@@ -9,19 +9,21 @@ class Game {
         this._console = new Console(this._ctx);
         this._round = new Round(this._ctx);
 
-        this._counter = 0
+        this._counter = 0;
+        this._intervalID = null;
 
         this._setListeners();
     }
 
     start() {
-        setInterval(() => {
+        this._intervalID = setInterval(() => {
             this._clear();
             this._round.newObstacle();
             this._draw();
             this._checkLimits();
-            this._checkColisions();
             this._move();
+            this._checkDeath();
+            this._checkColisions();
         }, 1000 / 60); 
     }
 
@@ -56,7 +58,7 @@ class Game {
 
     _checkColisions() {
         this._round.obstacle.forEach(o => {
-           if (o.noFloor) {
+           if (o.damage) {
                 const colisionY = this._warrior.y <= o.y + o.h && this._warrior.y >= o.y && o.y >= o.finalY - this._warrior.h;
                 const colisionX = this._warrior.x < o.x + o.w && this._warrior.x + this._warrior.w > o.x;
                 if (colisionY && colisionX) {
@@ -77,6 +79,20 @@ class Game {
         } else if (this._giant.life === 0) {
             this._youWin();
         }
+    }
+
+    _gameOver() {
+        clearInterval(this._intervalID);
+        setTimeout (() => {
+            this._round.drawGameOver();
+            this._ctx.drawImage(
+                this._giant.finalImg, 
+                this._ctx.canvas.width / 4, 
+                0, 
+                this._ctx.canvas.width * 4 / 5, 
+                this._ctx.canvas.height
+            )
+        }, 1000)
     }
 
     _setListeners() {

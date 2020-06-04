@@ -20,18 +20,16 @@ class Obstacle {
 
         this.noFloor = true;
         this.noCrash = true;
+        this.damage = true;
 
         this.damage = damage;
     }
 
     draw() {
-        this._ctx.fillStyle = 'rgba(46, 38, 38, 0.4)'
-        this._ctx.beginPath();
-        this._ctx.ellipse(this.finalX + this.w / 2, this.finalY + this.h * 2 / 3, this.w - this.w / 3, this.h / 2 - this.h / 4, 0, 0, 2 * Math.PI);
-        this._ctx.fill();
-        this._ctx.closePath();
+        this._drawShadow();
+        this._drawObtsacle();
 
-        this._ctx.drawImage(this._img, this.x, this.y, this.w, this.h);
+        
 
         this._positionChecker();
     }
@@ -42,12 +40,26 @@ class Obstacle {
         this._positionChecker();
     }
 
+    _drawShadow() {
+        this._ctx.fillStyle = 'rgba(46, 38, 38, 0.4)'
+        this._ctx.beginPath();
+        this._ctx.ellipse(this.finalX + this.w / 2, this.finalY + this.h * 2 / 3, this.w - this.w / 3, this.h / 2 - this.h / 4, 0, 0, 2 * Math.PI);
+        this._ctx.fill();
+        this._ctx.closePath();
+    }
+
+    _drawObtsacle() {
+        this._ctx.drawImage(this._img, this.x, this.y, this.w, this.h);
+    }
+
+
     _positionChecker () {
         if (this.y >= this.finalY) {
             this.y = this.finalY
         }
 
         if(this.y >= this.finalY) {
+            this.damage = false;
             setTimeout(() => {this.noFloor = false}, 2000)
         }
     }
