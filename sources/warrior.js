@@ -79,6 +79,13 @@ class Warrior {
         console.log('Hols')
     }
 
+    centerPosition() {
+        const colisionX = this.x <= this._ctx.canvas.width / 2 + 20 && this.x + this.w >= this._ctx.canvas.width / 2 - 20;
+        const colisionY = this.y <= this._ctx.canvas.height / 2 + 20 && this.y + this.h >= this._ctx.canvas.width / 2 - 20;
+
+        return colisionX && colisionY;
+    }
+
     _checkLimits() {
         if (this.x <= 10) {
             this.x = 10;

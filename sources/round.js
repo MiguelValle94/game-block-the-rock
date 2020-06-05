@@ -19,7 +19,7 @@ class Round {
     newObstacle() {
         const obstacles = [new Apple(this._ctx), new Rock(this._ctx), new GiantRock(this._ctx), new Hand(this._ctx)];
         
-        if (!(this._counter % 1000) && this._counter) {
+        if (!(this._counter % 2000) && this._counter) {
             this.state = 2;
         }
         
@@ -44,7 +44,7 @@ class Round {
             //     }   
             // }
 
-            if (!(this._counter % 20)) {
+            if (!(this._counter % 10)) {
                 this.obstacle.push(obstacles[this._round - 1]);
             } 
         } 
@@ -112,17 +112,5 @@ class Round {
 
     _deleteObstacle() {
         this.obstacle = this.obstacle.filter( obs => obs.noFloor && obs.noCrash);
-        this.obstacle = this.obstacle.sort((a, b) => {
-            if(!a.noFloor && !b.noFloor) {
-                if (a.y > b.y) {
-                    return 1;
-                  }
-                  if (a.y < b.y) {
-                    return -1;
-                  }
-                  
-                  return 0;
-            }
-        });
     }
 }

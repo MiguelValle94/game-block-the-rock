@@ -8,17 +8,19 @@ class Sword {
         
         this._w = 30;
         this._h = 30;
-        this._x = this._ctx.canvas.width / 2 - this._w / 2;
-        this._y = this._ctx.canvas.height / 2;
+        this.x = this._ctx.canvas.width / 2 - this._w / 2;
+        this.y = this._ctx.canvas.height / 2;
 
         this._counter = 0;
+
+        this.test = true;
     }
 
     draw() {
         this._ctx.drawImage(
             this._img, 
-            this._x, 
-            this._y, 
+            this.x, 
+            this.y, 
             this._w, 
             this._h
         )
@@ -29,10 +31,10 @@ class Sword {
     }
 
     _move() {
-        if (this._y % 2) {
-            this._y += 5
+        if (this.y % 2) {
+            this.y += 5
         } else {
-            this._y -= 5
+            this.y -= 5
         }
     }
 

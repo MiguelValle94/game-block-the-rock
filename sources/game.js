@@ -75,12 +75,9 @@ class Game {
     }
 
     _attackChecker() {
-        const sword = this._round.sword;
-        const colisionY = this._warrior.y <= sword.y
-        const colisionX = this._warrior.x < sword.x
         if (this._round.state === 2) {
-            if (this._warrior.y < 200) {
-                this._giant.health -= 20;
+            if (this._warrior.centerPosition()) {
+                setTimeout(() => this._giant.health -= 20, 2000);
                 this._warrior.attack();
                 this._round.state = 0;
                 this._round.usedSword = true;
