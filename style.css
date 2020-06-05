@@ -37,7 +37,7 @@ canvas {
 
 #warrior-life {
     height: 30px;
-    width: 280px;
+    width: 240px;
     position: absolute;
     left: 350px;
     top: 35px;
@@ -60,7 +60,7 @@ progress::-webkit-progress-bar {
 
 #giant-life {
     height: 30px;
-    width: 280px;
+    width: 240px;
     position: absolute;
     right: 320px;
     top: 35px;
@@ -90,6 +90,12 @@ a.end {
     border: 2px solid white;
     color: rgb(253, 253, 253);
     background-color: rgba(204, 33, 33, 0.863);
+}
+
+a.win {
+    border: 2px solid white;
+    color: rgb(253, 253, 253);
+    background-color: rgba(30, 138, 2, 0.863);
 }
 
 

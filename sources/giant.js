@@ -3,7 +3,7 @@ class Giant {
     constructor(ctx) {
         this._ctx = ctx;
 
-        this.life = 100;
+        this.health = 100;
 
         this._img = new Image();
         this._img.src = './img/legs.png';
@@ -19,5 +19,11 @@ class Giant {
 
     draw() {
         this._ctx.drawImage(this._img, this._x, this._y, this._w, this._h);
+        this._drawLife();
+    }
+
+    _drawLife() {
+        const giantLife = document.getElementById('giant');
+        giantLife.value = this.health;
     }
  }

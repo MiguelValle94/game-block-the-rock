@@ -17,6 +17,6 @@ class Console {
         this._ctx.fillStyle = 'rgb(217,231,240)';
         this._ctx.fillRect(this._x, this._y + 2, this._w, this._h - 2);
         this._ctx.strokeStyle = 'black';
-        this._ctx.strokeRect(this._x + 10, this._y + 10, this._w - 20, this._h - 20)
+        this._ctx.strokeRect(this._x + 10, this._y + 10, this._w - 20, this._h - 20);
     }
 }

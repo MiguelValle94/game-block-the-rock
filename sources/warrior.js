@@ -11,6 +11,9 @@ class Warrior {
         this._img.frameIndex = 0;
         this._img.stay = 4;
         this._img.stayIndex = 0 //0:front 1:left 2:right 3:back
+
+        this.finalImg = new Image();
+        this.finalImg.src = './img/warriorFinal.png'
         
         this.w = 30;
         this.h = 40;
@@ -70,6 +73,10 @@ class Warrior {
         if (this._count++ === 100) {
             this._count = 0;
         };
+    }
+
+    attack(giant) {
+        console.log('Hols')
     }
 
     _checkLimits() {

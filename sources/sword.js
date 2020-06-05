@@ -11,7 +11,6 @@ class Sword {
         this._x = this._ctx.canvas.width / 2 - this._w / 2;
         this._y = this._ctx.canvas.height / 2;
 
-        this.state = 0;
         this._counter = 0;
     }
 

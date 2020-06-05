@@ -24,6 +24,7 @@ class Game {
             this._move();
             this._checkDeath();
             this._checkColisions();
+            this._attackChecker();
         }, 1000 / 60); 
     }
 
@@ -69,8 +70,22 @@ class Game {
     }
 
     _decreaseLife(obstacle) {
-        obstacle.noCrash = false
+        obstacle.noCrash = false;
         this._warrior.health -= obstacle.damage;
+    }
+
+    _attackChecker() {
+        const sword = this._round.sword;
+        const colisionY = this._warrior.y <= sword.y
+        const colisionX = this._warrior.x < sword.x
+        if (this._round.state === 2) {
+            if (this._warrior.y < 200) {
+                this._giant.health -= 20;
+                this._warrior.attack();
+                this._round.state = 0;
+                this._round.usedSword = true;
+            }
+        }  
     }
 
     _checkDeath() {
@@ -92,7 +107,21 @@ class Game {
                 this._ctx.canvas.width * 4 / 5, 
                 this._ctx.canvas.height
             )
-        }, 1000)
+        }, 1000);
+    }
+
+    _youWin() {
+        clearInterval(this._intervalID);
+        setTimeout (() => {
+            this._round.drawYouWin();
+            this._ctx.drawImage(
+                this._warrior.finalImg, 
+                this._ctx.canvas.width / 2 + 50, 
+                0, 
+                this._ctx.canvas.width * 3 / 4, 
+                this._ctx.canvas.height
+            )
+        }, 1000);
     }
 
     _setListeners() {
