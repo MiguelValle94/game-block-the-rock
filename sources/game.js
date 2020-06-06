@@ -101,18 +101,12 @@ class Game {
 
     _gameOver() {
         clearInterval(this._intervalID);
-        setTimeout (() => {
-            this._round.drawGameOver();
-            this._giant.drawFinal();
-        }, 1000);
+        setTimeout (() => {this._round.drawGameOver()}, 1000);
     }
 
     _youWin() {
         clearInterval(this._intervalID);
-        setTimeout (() => {
-            this._round.drawYouWin();
-            this._warrior.drawFinal();
-        }, 1000);
+        setTimeout (() => {this._round.drawYouWin()}, 1000);
     }
 
     _setListeners() {

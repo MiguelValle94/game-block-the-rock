@@ -3,13 +3,10 @@ class Giant {
     constructor(ctx) {
         this._ctx = ctx;
 
-        this.health = 100;
+        this.health = 0;
 
         this._img = new Image();
         this._img.src = './img/legs.png';
-
-        this._finalImg = new Image();
-        this._finalImg.src = './img/giant.png'
 
         this._w = 150;
         this._h = LIMIT_Y - 30;
@@ -20,16 +17,6 @@ class Giant {
     draw() {
         this._ctx.drawImage(this._img, this._x, this._y, this._w, this._h);
         this._drawLife();
-    }
-
-    drawFinal() {
-        this._ctx.drawImage(
-            this._finalImg, 
-            this._ctx.canvas.width / 4, 
-            0, 
-            this._ctx.canvas.width * 4 / 5, 
-            this._ctx.canvas.height
-        );
     }
 
     _drawLife() {

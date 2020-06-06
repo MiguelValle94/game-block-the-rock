@@ -9,12 +9,15 @@ class Round {
         this.state = 0;
 
         this.obstacle = [];
-
-        this._img = new Image();
-        this._img.src = './img/sky.jpg';
-
+        
         this.sword = new Sword(this._ctx);
         this.usedSword = false;
+
+        this._imgYW = new Image();
+        this._imgYW.src = './img/youwin.jpg';
+
+        this._imgGO = new Image();
+        this._imgGO.src = './img/gameover.jpg';
     }
 
     newObstacle() {
@@ -70,45 +73,45 @@ class Round {
 
     drawGameOver() {
         this._ctx.drawImage(
-            this._img, 
+            this._imgGO, 
             0, 
             0, 
             this._ctx.canvas.width, 
             this._ctx.canvas.height
         )
 
-        this._ctx.font = "40px Black Ops One";
-        this._ctx.fillStyle = 'red'
+        this._ctx.font = "50px Black Ops One";
+        this._ctx.fillStyle = 'rgb(204, 33, 33)'
         this._ctx.textAlign = "left";
-        this._ctx.fillText('Game over!', 40, 400);
+        this._ctx.fillText('Game over!', 40, 480);
 
         const divs = [...document.getElementsByClassName('deletable')];
         divs.forEach(el => el.innerHTML = '')
 
-        const button = document.getElementById('end');
-        button.className = 'end'
+        const button = document.getElementById('end-div');
+        button.innerHTML = '<a id="end" href="">Try again?</a>'
     }
 
 
     drawYouWin() {
         this._ctx.drawImage(
-            this._img, 
+            this._imgYW, 
             0, 
             0, 
             this._ctx.canvas.width, 
             this._ctx.canvas.height
-        )
+        );
 
-        this._ctx.font = "40px Black Ops One";
-        this._ctx.fillStyle = 'green'
+        this._ctx.font = "50px Black Ops One";
+        this._ctx.fillStyle = 'rgb(30, 138, 2)'
         this._ctx.textAlign = "left";
-        this._ctx.fillText('You win!', 60, 400);
+        this._ctx.fillText('You win!', 40, 480);
 
         const divs = [...document.getElementsByClassName('deletable')];
         divs.forEach(el => el.innerHTML = '')
 
-        const button = document.getElementById('next');
-        button.className = 'win'
+        const button = document.getElementById('next-div');
+        button.innerHTML = '<a id="win" href="">Who wanna fight?</a>'
     }
 
 

@@ -8,13 +8,6 @@ class Console {
         this._x = 0;
         this._y = this._ctx.canvas.height - 50;
 
-        this._phrases = [
-            ['You wanna play?', 'So...you like apples?', 'Tick tock my old friend', 'You are like an ant for me'],
-            ['You don\'t like fruit. I see...', 'Let\'s try something bigger', 'HAHAHA Run Forrest Run', 'Imagine that you don´t die'],
-            ['OK, now I\'m furious', 'Take care of yout head', 'Play with me', 'It is just half a mountain'],
-            ['Prepare to die', 'It is that yout house?', 'A flying house...', 'You are faster tham Usain Bolt'],
-            ['It hurts', 'Tsunamiiii...Titititi', 'Shit, shit, shit', 'Ok, I don\'t want to play anymore']           
-        ];
         this.phraseIndex = 0;
 
         this._counter = 0
@@ -38,7 +31,7 @@ class Console {
     _drawPhrase(round) {
         this._ctx.font = "20px Roboto Mono";
         this._ctx.fillStyle = 'black';
-        const phrase = this._phrases[round - 1][this.phraseIndex]
+        const phrase = PHRASES[round - 1][this.phraseIndex]
         this._ctx.textAlign = "left";
         this._ctx.fillText(`${phrase}`, 20, this._ctx.canvas.height - 20);
         if (this._counter === 800) {

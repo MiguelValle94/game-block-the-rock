@@ -18,6 +18,10 @@ h1 {
     float: left;
 }
 
+#logo {
+    width: 150px;
+}
+
 #small {
     font-size: 20px;
     padding: 0;
@@ -29,10 +33,6 @@ h1 {
 
 canvas {
     border: 1px solid black;
-}
-
-#logo {
-    width: 150px;
 }
 
 #warrior-life {
@@ -69,37 +69,42 @@ progress::-webkit-progress-bar {
 }
 
 .button {
-    padding: 20px;
+    padding: 0;
     font-size: 30px;
     font-family: 'Roboto Mono', monospace;
 }
 
 a {
     position: absolute;
-    left: 400px;
-    top: 450px;
+    left: 390px;
+    top: 410px;
     text-decoration: none;
     color: rgba(0, 0, 0, 0);
     background-color: rgba(0, 0, 0, 0);
 }
 
 #start {
+    padding: 20px;
     position: absolute;
     left: 550px;
-    top: 250px;
+    top: 350px;
     text-decoration: none;
     border: 2px solid white;
     color: rgb(253, 253, 253);
     background-color: rgba(21, 80, 190, 0.863);
 }
 
-.end {
+#start:hover {
+    background-color: rgba(4, 46, 124, 0.863);
+}
+
+#end {
     border: 2px solid white;
     color: rgb(253, 253, 253);
     background-color: rgba(204, 33, 33, 0.863);
 }
 
-.win {
+#win {
     border: 2px solid white;
     color: rgb(253, 253, 253);
     background-color: rgba(30, 138, 2, 0.863);

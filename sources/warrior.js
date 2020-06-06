@@ -19,9 +19,6 @@ class Warrior {
         this._img.stay = 4;
         this._img.stayIndex = 0 //0:front 1:left 2:right 3:back
 
-        this._finalImg = new Image();
-        this._finalImg.src = './img/warriorFinal.png'
-
         this._cutImg = new Image();
         this._cutImg.src = './img/cut.png';
         this._cutX = this._ctx.canvas.width;
@@ -87,7 +84,6 @@ class Warrior {
 
     drawAttack() {
         this._attackPreparation();
-        console.log(this._cutX);
         this._ctx.fillStyle = 'black';
         if (this.attackCheck) {
             this._ctx.fillRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
@@ -117,16 +113,6 @@ class Warrior {
         const colisionY = this.y <= this._ctx.canvas.height / 2 + 20 && this.y + this.h >= this._ctx.canvas.height / 2;
 
         return colisionX && colisionY;
-    }
-
-    drawFinal() {
-        this._ctx.drawImage(
-            this._finalImg, 
-            this._ctx.canvas.width / 2 + 50, 
-            0, 
-            this._ctx.canvas.width * 3 / 4, 
-            this._ctx.canvas.height
-        );
     }
 
     _checkLimits() {
