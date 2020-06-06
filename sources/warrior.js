@@ -5,6 +5,13 @@ class Warrior {
 
         this.health = 100;
 
+        this.w = 30;
+        this.h = 40;
+        this.x = this._ctx.canvas.width / 2 - this.w / 2;
+        this.y = this._ctx.canvas.height / 2;
+        this._vx = 2;
+        this._vy = 2;
+
         this._img = new Image();
         this._img.src = './img/LeviSpriteC.png';
         this._img.frames = 3;
@@ -12,17 +19,16 @@ class Warrior {
         this._img.stay = 4;
         this._img.stayIndex = 0 //0:front 1:left 2:right 3:back
 
-        this.finalImg = new Image();
-        this.finalImg.src = './img/warriorFinal.png'
+        this._finalImg = new Image();
+        this._finalImg.src = './img/warriorFinal.png'
+
+        this._cutImg = new Image();
+        this._cutImg.src = './img/cut.png';
+        this._cutX = this._ctx.canvas.width;
+        this._cutY = 0 - this._ctx.canvas.height;
+
+        this.attackCheck = false;
         
-        this.w = 30;
-        this.h = 40;
-        this.x = this._ctx.canvas.width / 2 - this.w / 2;
-        this.y = this._ctx.canvas.height / 2;
-
-        this._vx = 2;
-        this._vy = 2;
-
         this._count = 0;
     }
 
@@ -76,15 +82,50 @@ class Warrior {
     }
 
     attack(giant) {
-        console.log('Hols')
         setTimeout(() => giant.health -= 20, 2000);
     }
 
+    drawAttack() {
+        this._ctx.fillStyle = 'black';
+        if (this.attackCheck) {
+            this._ctx.fillRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
+            this._ctx.drawImage(
+                this._cutImg, 
+                this._cutX, 
+                this._cutY, 
+                this._ctx.canvas.width, 
+                this._ctx.canvas.height
+            );
+
+            this._deleteLifeWhenAttack();
+
+            if (!(this.count % 5)){
+                this._cutX -= 50.9;
+                this._cutY += 40;
+            }
+            setTimeout(() => {
+                this.attackCheck = false;
+                this._drawLifeAfterAttack();
+            }, 1500);
+
+        }
+    }
+
     centerPosition() {
-        const colisionX = this.x <= this._ctx.canvas.width / 2 + 20 && this.x + this.w >= this._ctx.canvas.width / 2 - 20;
-        const colisionY = this.y <= this._ctx.canvas.height / 2 + 20 && this.y + this.h >= this._ctx.canvas.width / 2 - 20;
+        const colisionX = this.x <= this._ctx.canvas.width / 2 + 15 && this.x + this.w >= this._ctx.canvas.width / 2 - 15;
+        const colisionY = this.y <= this._ctx.canvas.height / 2 + 20 && this.y + this.h >= this._ctx.canvas.height / 2;
 
         return colisionX && colisionY;
+    }
+
+    drawFinal() {
+        this._ctx.drawImage(
+            this._finalImg, 
+            this._ctx.canvas.width / 2 + 50, 
+            0, 
+            this._ctx.canvas.width * 3 / 4, 
+            this._ctx.canvas.height
+        );
     }
 
     _checkLimits() {
@@ -102,5 +143,15 @@ class Warrior {
     _drawLife() {
         const warriorLife = document.getElementById('warrior');
         warriorLife.value = this.health;
+    }
+
+    _deleteLifeWhenAttack() {
+        const lifeBoxes = [...document.getElementsByClassName('displayed')];
+        lifeBoxes.forEach(el => el.className = 'hiden');
+    }
+
+    _drawLifeAfterAttack() {
+        const lifeBoxes = [...document.getElementsByClassName('hiden')];
+        lifeBoxes.forEach(el => el.className = 'displayed');
     }
  }

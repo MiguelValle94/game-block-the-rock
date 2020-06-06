@@ -12,8 +12,6 @@ class Sword {
         this.y = this._ctx.canvas.height / 2;
 
         this._counter = 0;
-
-        this.test = true;
     }
 
     draw() {

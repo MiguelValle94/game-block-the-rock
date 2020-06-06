@@ -2,8 +2,9 @@ class Round {
 
     constructor(ctx) {
         this._ctx = ctx;
-        this._round = 4;
+        this.round = 1;
         this._counter = 0;
+        this._objectCounter = 0;
 
         this.state = 0;
 
@@ -19,15 +20,17 @@ class Round {
     newObstacle() {
         const obstacles = [new Apple(this._ctx), new Rock(this._ctx), new GiantRock(this._ctx), new House(this._ctx)];
         
-        if (!(this._counter % 3000) && this._counter) {
+        if (!(this._objectCounter % 3000) && this._objectCounter) {
             this.state = 2;
         }
         
         if (this.usedSword) {
             this.state = 0;
             this.obstacle = [];
-            this._round++;
+            this.round++;
             this.usedSword = false;
+            this._counter = 0;
+            this._objectCounter = 0;
         }
 
         if (this.state === 0) {
@@ -37,15 +40,14 @@ class Round {
         }
 
         if (this.state >= 1){
-            // if (this._round === 5) {
-            //     if (!(this._counter % 20)) {
-            //         const randomNumber = Math.floor(Math.random() * obstacles.length);
-            //         this.obstacle.push(obstacles[randomNumber]);
-            //     }   
-            // }
-
-            if (!(this._counter % obstacles[this._round - 1].apparitionRate)) {
-                this.obstacle.push(obstacles[this._round - 1]);
+            this._objectCounter++;
+            if (this.round === 5) {
+                if (!(this._counter % 20)) {
+                    const randomNumber = Math.floor(Math.random() * obstacles.length);
+                    this.obstacle.push(obstacles[randomNumber]);
+                }   
+            } else if (!(this._counter % obstacles[this.round - 1].apparitionRate)) {
+                this.obstacle.push(obstacles[this.round - 1]);
             } 
         } 
     }
@@ -58,7 +60,7 @@ class Round {
             this._ctx.fillStyle = 'red'
         };
         this._ctx.textAlign = "center";
-        this._ctx.fillText(`Round ${this._round}`, this._ctx.canvas.width / 2, 30);
+        this._ctx.fillText(`Round ${this.round}`, this._ctx.canvas.width / 2, 30);
         this._counter++;
         this._deleteObstacle();
         if (this.state === 2) {
