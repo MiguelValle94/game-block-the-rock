@@ -85,7 +85,7 @@ class Round {
         const divs = [...document.getElementsByClassName('deletable')];
         divs.forEach(el => el.innerHTML = '')
 
-        const button = document.getElementById('try');
+        const button = document.getElementById('end');
         button.className = 'end'
     }
 

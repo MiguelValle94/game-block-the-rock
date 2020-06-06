@@ -86,6 +86,8 @@ class Warrior {
     }
 
     drawAttack() {
+        this._attackPreparation();
+        console.log(this._cutX);
         this._ctx.fillStyle = 'black';
         if (this.attackCheck) {
             this._ctx.fillRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
@@ -107,7 +109,6 @@ class Warrior {
                 this.attackCheck = false;
                 this._drawLifeAfterAttack();
             }, 1500);
-
         }
     }
 
@@ -153,5 +154,12 @@ class Warrior {
     _drawLifeAfterAttack() {
         const lifeBoxes = [...document.getElementsByClassName('hiden')];
         lifeBoxes.forEach(el => el.className = 'displayed');
+    }
+
+    _attackPreparation() {
+        if (this._cutX <= -4080) { 
+            this._cutX = this._ctx.canvas.width
+            this._cutY = -this._ctx.canvas.height
+        }
     }
  }

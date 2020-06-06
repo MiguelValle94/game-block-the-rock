@@ -68,25 +68,38 @@ progress::-webkit-progress-bar {
     align-items: center;
 }
 
-a {
-    color: rgba(0, 0, 0, 0);
-    background-color: rgba(0, 0, 0, 0);
-    text-decoration: none;
-    position: absolute;
-    left: 400px;
-    top: 450px;
+.button {
     padding: 20px;
     font-size: 30px;
     font-family: 'Roboto Mono', monospace;
 }
 
-a.end {
+a {
+    position: absolute;
+    left: 400px;
+    top: 450px;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#start {
+    position: absolute;
+    left: 550px;
+    top: 250px;
+    text-decoration: none;
+    border: 2px solid white;
+    color: rgb(253, 253, 253);
+    background-color: rgba(21, 80, 190, 0.863);
+}
+
+.end {
     border: 2px solid white;
     color: rgb(253, 253, 253);
     background-color: rgba(204, 33, 33, 0.863);
 }
 
-a.win {
+.win {
     border: 2px solid white;
     color: rgb(253, 253, 253);
     background-color: rgba(30, 138, 2, 0.863);
