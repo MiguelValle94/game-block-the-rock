@@ -2,7 +2,7 @@ class Round {
 
     constructor(ctx) {
         this._ctx = ctx;
-        this._round = 1;
+        this._round = 4;
         this._counter = 0;
 
         this.state = 0;
@@ -17,9 +17,9 @@ class Round {
     }
 
     newObstacle() {
-        const obstacles = [new Apple(this._ctx), new Rock(this._ctx), new GiantRock(this._ctx), new Hand(this._ctx)];
+        const obstacles = [new Apple(this._ctx), new Rock(this._ctx), new GiantRock(this._ctx), new House(this._ctx)];
         
-        if (!(this._counter % 2000) && this._counter) {
+        if (!(this._counter % 3000) && this._counter) {
             this.state = 2;
         }
         
@@ -44,7 +44,7 @@ class Round {
             //     }   
             // }
 
-            if (!(this._counter % 10)) {
+            if (!(this._counter % obstacles[this._round - 1].apparitionRate)) {
                 this.obstacle.push(obstacles[this._round - 1]);
             } 
         } 

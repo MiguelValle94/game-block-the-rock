@@ -77,6 +77,7 @@ class Warrior {
 
     attack(giant) {
         console.log('Hols')
+        setTimeout(() => giant.health -= 20, 2000);
     }
 
     centerPosition() {

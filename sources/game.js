@@ -35,6 +35,7 @@ class Game {
     _draw() {
         this._background.draw();
         this._giant.draw();  
+        this._round.obstacle.forEach( obs => obs.drawShadow());
         this._warrior.draw();
         this._round.obstacle.forEach( obs => obs.draw());
         this._drawMenu();
@@ -77,8 +78,7 @@ class Game {
     _attackChecker() {
         if (this._round.state === 2) {
             if (this._warrior.centerPosition()) {
-                setTimeout(() => this._giant.health -= 20, 2000);
-                this._warrior.attack();
+                this._warrior.attack(this._giant);
                 this._round.state = 0;
                 this._round.usedSword = true;
             }
