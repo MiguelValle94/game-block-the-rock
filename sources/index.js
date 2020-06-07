@@ -8,7 +8,8 @@ window.onload = () => {
     newG._background.drawStart();
 
     const startBtn = document.getElementById('start');
-    const bgoundAudio = document.getElementById('bgound');
+    const bgoundAudio = document.getElementById('bground');
+    bgoundAudio.volume = 0.4;
     
     startBtn.onclick = function() {
         newG.start();

@@ -2,7 +2,7 @@ class Round {
 
     constructor(ctx) {
         this._ctx = ctx;
-        this.round = 2;
+        this.round = 1;
         this._counter = 0;
         this._objectCounter = 0;
 
