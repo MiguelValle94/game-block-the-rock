@@ -27,6 +27,8 @@ class Warrior {
         this.attackCheck = false;
         
         this._count = 0;
+
+        this._swordAudio = document.getElementById('sword');
     }
 
     draw() {
@@ -79,6 +81,7 @@ class Warrior {
     }
 
     attack(giant) {
+        this._swordAudio.play();
         setTimeout(() => giant.health -= 20, 2000);
     }
 

@@ -13,6 +13,8 @@ class Game {
         this._intervalID = null;
 
         this._setListeners();
+
+        this._painAudio = document.getElementById('pain');
     }
 
     start() {
@@ -74,6 +76,7 @@ class Game {
     }
 
     _decreaseLife(obstacle) {
+        this._painAudio.play()
         obstacle.noCrash = false;
         this._warrior.health -= obstacle.damage;
     }

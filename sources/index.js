@@ -7,10 +7,13 @@ window.onload = () => {
 
     newG._background.drawStart();
 
-    const startBtn = document.getElementById('start')
+    const startBtn = document.getElementById('start');
+    const bgoundAudio = document.getElementById('bgound');
+    
     startBtn.onclick = function() {
         newG.start();
         startBtn.remove();
+        bgoundAudio.play();
     } 
 }
 

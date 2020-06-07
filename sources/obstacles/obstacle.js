@@ -8,10 +8,8 @@ class Obstacle {
         
         this.w = w;
         this.h = h;
-
         this.x = Math.random() * (this._ctx.canvas.width - this.w);
         this.y = 0;
-
         this.finalX = this.x;
         this.finalY = LIMIT_Y + Math.random() * (this._ctx.canvas.height - this.h - LIMIT_Y- 50);
 
@@ -32,7 +30,7 @@ class Obstacle {
     }
 
     drawShadow() {
-        this._ctx.fillStyle = 'rgba(46, 38, 38, 0.4)'
+        this._ctx.fillStyle = `rgba(46, 38, 38, ${0.3 + this.y / (this.finalY + 500)})`
         this._ctx.beginPath();
         this._ctx.ellipse(this.finalX + this.w / 2, this.finalY + this.h * 2 / 3, this.w - this.w / 3, this.h / 2 - this.h / 4, 0, 0, 2 * Math.PI);
         this._ctx.fill();

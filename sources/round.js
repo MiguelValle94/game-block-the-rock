@@ -2,7 +2,7 @@ class Round {
 
     constructor(ctx) {
         this._ctx = ctx;
-        this.round = 1;
+        this.round = 2;
         this._counter = 0;
         this._objectCounter = 0;
 
@@ -18,6 +18,8 @@ class Round {
 
         this._imgGO = new Image();
         this._imgGO.src = './img/gameover.jpg';
+
+        this._laughAudio = document.getElementById('laugh');
     }
 
     newObstacle() {
@@ -39,6 +41,7 @@ class Round {
         if (this.state === 0) {
             setTimeout(() => {
                 this.state = 1;
+                this._laughAudio.play();
             }, 5000);
         }
 
