@@ -9,7 +9,7 @@ class Help {
         this._w = 20;
         this._h = 20;
         this._x = 20 + Math.random() * (this._ctx.canvas.width - 20);
-        this._y = LIMIT_Y + Math.floor(Math.random() * (this._ctx.canvas.height - LIMIT_Y - 50)); 
+        this._y = LIMIT_Y + Math.floor(Math.random() * (this._ctx.canvas.height - LIMIT_Y - 100)); 
 
         this._counter = 0;
     }
@@ -29,7 +29,7 @@ class Help {
     }
 
     colisionChecker(warrior) {
-        const colisionX = warrior.x <= this._x / this._w && warrior.x + warrior.w >= this._x;
+        const colisionX = warrior.x <= this._x + this._w && warrior.x + warrior.w >= this._x;
         const colisionY = warrior.y <= this._y + this._h && warrior.y + warrior.h >= this._y
 
         return colisionX && colisionY;

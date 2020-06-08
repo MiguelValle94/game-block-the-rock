@@ -28,6 +28,7 @@ class Game {
             this._draw();
             this._move();
 
+            this._round.helpChecker(this._warrior);
             this._attackChecker();
             
         }, 1000 / 60); 

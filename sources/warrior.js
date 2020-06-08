@@ -9,8 +9,8 @@ class Warrior {
         this.h = 40;
         this.x = this._ctx.canvas.width / 2 - this.w / 2;
         this.y = this._ctx.canvas.height / 2;
-        this._vx = 2;
-        this._vy = 2;
+        this.vx = 2;
+        this.vy = 2;
 
         this._img = new Image();
         this._img.src = './img/LeviSpriteC.png';
@@ -50,19 +50,19 @@ class Warrior {
     move(direction) {
         switch (direction) {
             case 'front':
-                this.y += this._vx;
+                this.y += this.vy;
                 this._img.stayIndex = 0;
                 break;
             case 'back':
-                this.y -= this._vx;
+                this.y -= this.vy;
                 this._img.stayIndex = 3;
                 break;
             case 'right':
-                this.x += this._vx;
+                this.x += this.vx;
                 this._img.stayIndex = 2;
                 break;
             case 'left':
-                this.x -= this._vx;
+                this.x -= this.vx;
                 this._img.stayIndex = 1;
                 break; 
         }

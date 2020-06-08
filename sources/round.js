@@ -2,13 +2,15 @@ class Round {
 
     constructor(ctx) {
         this._ctx = ctx;
-        this.round = 1;
+        this.round = 2;
         this._counter = 0;
         this._objectCounter = 0;
 
         this.state = 0;
 
         this.obstacle = [];
+
+        this.help = null;
         
         this.sword = new Sword(this._ctx);
         this.usedSword = false;
@@ -115,6 +117,22 @@ class Round {
 
         const button = document.getElementById('next-div');
         button.innerHTML = '<a id="win" href="">Who wanna fight?</a>'
+    }
+
+    helpChecker(warrior) {
+        if (!this.help) {
+            if (this._objectCounter === 100) {
+                const helps = [new LifeHelp(this._ctx), new ProtectionHelp(this._ctx), new PaceHelp(this._ctx)];
+                this.help = helps[Math.floor(Math.random() * helps.length)];
+            }   
+        } else {
+            this.help.draw();
+            if (this.help.colisionChecker(warrior)) {
+                this.help.power(warrior);
+                this.help = null;
+
+            }       
+        }
     }
 
 

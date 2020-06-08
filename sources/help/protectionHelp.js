@@ -5,7 +5,7 @@ class ProtectionHelp extends Help {
     }
 
     power(warrior) {
-        console.log('protected', warrior)
+        console.log('protected')
     }
 
 }
