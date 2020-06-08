@@ -66,7 +66,7 @@ class Game {
     _checkColisions() {
         this._round.obstacle.forEach(o => {
            if (o.damage) {
-                const colisionY = this._warrior.y <= o.y + o.h && this._warrior.y >= o.y && o.y >= o.finalY - this._warrior.h;
+                const colisionY = this._warrior.y <= o.y + o.h && this._warrior.y >= o.y + o.h / 3  && o.y >= o.finalY - this._warrior.h;
                 const colisionX = this._warrior.x < o.x + o.w && this._warrior.x + this._warrior.w > o.x;
                 if (colisionY && colisionX) {
                     this._decreaseLife(o);
