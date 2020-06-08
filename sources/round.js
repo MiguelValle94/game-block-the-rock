@@ -2,7 +2,7 @@ class Round {
 
     constructor(ctx) {
         this._ctx = ctx;
-        this.round = 2;
+        this.round = 4;
         this._counter = 0;
         this._objectCounter = 0;
 
@@ -121,7 +121,7 @@ class Round {
 
     helpChecker(warrior) {
         if (!this.help) {
-            if (this._objectCounter === 100) {
+            if (this._objectCounter === 1000) {
                 const helps = [new LifeHelp(this._ctx), new ProtectionHelp(this._ctx), new PaceHelp(this._ctx)];
                 this.help = helps[Math.floor(Math.random() * helps.length)];
             }   
@@ -134,7 +134,6 @@ class Round {
             }       
         }
     }
-
 
     _deleteObstacle() {
         this.obstacle = this.obstacle.filter( obs => obs.noFloor && obs.noCrash);

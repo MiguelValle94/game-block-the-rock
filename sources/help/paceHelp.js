@@ -10,7 +10,7 @@ class PaceHelp extends Help {
         setTimeout(() =>  {
             warrior.vx /= 2;
             warrior.vy /= 2;
-        }, 5000);
+        }, 10000);
         console.log('pace', warrior);
     }
 

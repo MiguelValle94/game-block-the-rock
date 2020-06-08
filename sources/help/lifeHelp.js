@@ -5,8 +5,10 @@ class LifeHelp extends Help {
     }
 
     power(warrior) {
-        if (warrior.health <= 87.5) {
-            warrior.health += 12.5;
+        if (warrior.health <= 75) {
+            warrior.health += 25;
+        } else {
+            warrior.health = 100;
         }
     }
 
