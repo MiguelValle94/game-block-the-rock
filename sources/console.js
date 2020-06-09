@@ -31,13 +31,13 @@ class Console {
     _drawPhrase(round) {
         this._ctx.font = "20px Roboto Mono";
         this._ctx.fillStyle = 'black';
-        const phrase = PHRASES[round - 1][this.phraseIndex]
+        const phrase = PHRASES[round - 1][this.phraseIndex];
         this._ctx.textAlign = "left";
         this._ctx.fillText(`${phrase}`, 20, this._ctx.canvas.height - 20);
         if (this._counter === 800) {
             this._counter = 0;
             if(this.phraseIndex++ >= 3) {
-                this.phraseIndex = 3
+                this.phraseIndex = 3;
             }
         }
     }

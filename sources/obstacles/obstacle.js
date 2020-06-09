@@ -18,7 +18,6 @@ class Obstacle {
 
         this.noFloor = true;
         this.noCrash = true;
-        this.damage = true;
 
         this.damage = damage;
         this.apparitionRate = apparitionRate;
@@ -30,7 +29,7 @@ class Obstacle {
     }
 
     drawShadow() {
-        this._ctx.fillStyle = `rgba(46, 38, 38, ${0.3 + this.y / (this.finalY + 500)})`
+        this._ctx.fillStyle = `rgba(46, 38, 38, ${0.3 + this.y / (this.finalY + 500)})`;
         this._ctx.beginPath();
         this._ctx.ellipse(this.finalX + this.w / 2, this.finalY + this.h * 2 / 3, this.w - this.w / 3, this.h / 2 - this.h / 4, 0, 0, 2 * Math.PI);
         this._ctx.fill();
@@ -49,12 +48,12 @@ class Obstacle {
 
     _positionChecker () {
         if (this.y >= this.finalY) {
-            this.y = this.finalY
+            this.y = this.finalY;
         }
 
         if(this.y >= this.finalY) {
-            this.damage = false;
-            setTimeout(() => {this.noFloor = false}, 2000)
+            this.damage = 0;
+            setTimeout(() => {this.noFloor = false}, 2000);
         }
     }
 }

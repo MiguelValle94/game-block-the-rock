@@ -3,13 +3,12 @@ class Game {
     constructor(ctx) {
         this._ctx = ctx;
 
-        this._background = new Background(this._ctx);
+        this.background = new Background(this._ctx);
         this._giant = new Giant(this._ctx);
         this._warrior = new Warrior(this._ctx);
         this._console = new Console(this._ctx);
         this._round = new Round(this._ctx);
 
-        this._counter = 0;
         this._intervalID = null;
 
         this._setListeners();
@@ -22,7 +21,7 @@ class Game {
             this._checkLimits();
             this._checkDeath();
             this._checkColisions();
-            this._round.newObstacle();
+            this._round.changeRound();
 
             this._clear();
             this._draw();
@@ -39,21 +38,14 @@ class Game {
     }
 
     _draw() {
-        this._background.draw();
+        this.background.draw();
         this._giant.draw();  
         this._round.obstacle.forEach( obs => obs.drawShadow());
         this._warrior.draw();
         this._round.obstacle.forEach( obs => obs.draw());
-        this._drawMenu();
+        this.background.drawMenu();
         this._round.draw();
         this._console.draw(this._round.round);
-    }
-
-    _drawMenu() {
-        this._ctx.fillStyle = "black";
-        this._ctx.fillRect(0, 0, this._ctx.canvas.width, 40);
-        this._ctx.fillStyle = "rgb(246, 208, 132)";
-        this._ctx.fillRect(0, 0, this._ctx.canvas.width, 38);
     }
 
     _move() {
@@ -61,7 +53,7 @@ class Game {
     }
 
     _checkLimits() {
-        this._warrior._checkLimits();
+        this._warrior.checkLimits();
     }
 
     _checkColisions() {
@@ -84,14 +76,12 @@ class Game {
 
     _attackChecker() {
         this._warrior.drawAttack();
-        if (this._round.state === 2) {
-            if (this._warrior.centerPosition()) {
+        if (this._round.state === 2 && this._warrior.centerPosition()) {
                 this._warrior.attackCheck = true;
                 this._warrior.attack(this._giant);
                 this._round.state = 0;
                 this._round.usedSword = true;
                 this._console.phraseIndex = 0;
-            }
         }  
     }
 

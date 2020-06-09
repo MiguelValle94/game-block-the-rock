@@ -118,12 +118,14 @@ class Warrior {
         return colisionX && colisionY;
     }
 
-    _checkLimits() {
+    checkLimits() {
         if (this.x <= 10) {
             this.x = 10;
         } else if (this.x + this.w >= this._ctx.canvas.width - 10) {
             this.x = this._ctx.canvas.width - 10 - this.w;
-        } else if (this.y <= LIMIT_Y + 10) {
+        } 
+        
+        if (this.y <= LIMIT_Y + 10) {
             this.y = LIMIT_Y + 10;
         } else if (this.y + this.h >= this._ctx.canvas.height - 60 ) {
             this.y = this._ctx.canvas.height - 60 - this.h;

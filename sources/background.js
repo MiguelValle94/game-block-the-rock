@@ -18,7 +18,6 @@ class Background {
         this._instructionsImg = new Image();
         this._instructionsImg.src = './img/instructions.png';
 
-
         this._limitX = 0;
         this._limitY = 20;
         this._limitW = this._w;
@@ -28,6 +27,13 @@ class Background {
     draw() {
         this._drawGrass();
         this._drawLimits();
+    }
+
+    drawMenu() {
+        this._ctx.fillStyle = "black";
+        this._ctx.fillRect(0, 0, this._ctx.canvas.width, 40);
+        this._ctx.fillStyle = "rgb(246, 208, 132)";
+        this._ctx.fillRect(0, 0, this._ctx.canvas.width, 38);
     }
 
     drawStart() {

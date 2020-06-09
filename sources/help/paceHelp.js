@@ -11,7 +11,6 @@ class PaceHelp extends Help {
             warrior.vx /= 2;
             warrior.vy /= 2;
         }, 10000);
-        console.log('pace', warrior);
     }
 
 }

@@ -5,7 +5,7 @@ const newG = new Game(ctx);
 
 window.onload = () => {
 
-    newG._background.drawStart();
+    newG.background.drawStart();
 
     const startBtn = document.getElementById('start');
     const bgoundAudio = document.getElementById('bground');

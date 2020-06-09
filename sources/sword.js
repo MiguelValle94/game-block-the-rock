@@ -30,9 +30,9 @@ class Sword {
 
     _move() {
         if (this.y % 2) {
-            this.y += 5
+            this.y += 5;
         } else {
-            this.y -= 5
+            this.y -= 5;
         }
     }
 

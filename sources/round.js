@@ -3,10 +3,9 @@ class Round {
     constructor(ctx) {
         this._ctx = ctx;
         this.round = 1;
-        this._counter = 0;
+        this._tick = 0;
         this._objectCounter = 0;
-
-        this.state = 0;
+        this.state = 0; //0-Nothing 1-Objects 2-Sword
 
         this.obstacle = [];
 
@@ -24,20 +23,29 @@ class Round {
         this._laughAudio = document.getElementById('laugh');
     }
 
-    newObstacle() {
-        const obstacles = [new Apple(this._ctx), new Rock(this._ctx), new GiantRock(this._ctx), new House(this._ctx)];
-        
-        if (!(this._objectCounter % 3000) && this._objectCounter) {
+    draw() {
+        this._tick++;
+        this._deleteObstacle();
+        this._drawRoundMenu();
+        this._newObstacle();
+        if (this.state === 2) {
+            this.sword.draw();
+        }
+    }
+
+    changeRound() {
+        if (!(this._objectCounter % 3500) && this._objectCounter) {
             this.state = 2;
         }
-        
+
         if (this.usedSword) {
-            this.state = 0;
-            this.obstacle = [];
             this.round++;
-            this.usedSword = false;
-            this._counter = 0;
+            this.state = 0;
+            
+            this.obstacle = [];
+            this._tick = 0;
             this._objectCounter = 0;
+            this.usedSword = false;
         }
 
         if (this.state === 0) {
@@ -45,34 +53,6 @@ class Round {
                 this.state = 1;
                 this._laughAudio.play();
             }, 5000);
-        }
-
-        if (this.state >= 1){
-            this._objectCounter++;
-            if (this.round === 5) {
-                if (!(this._counter % 20)) {
-                    const randomNumber = Math.floor(Math.random() * obstacles.length);
-                    this.obstacle.push(obstacles[randomNumber]);
-                }   
-            } else if (!(this._counter % obstacles[this.round - 1].apparitionRate)) {
-                this.obstacle.push(obstacles[this.round - 1]);
-            } 
-        } 
-    }
-
-    draw() {
-        this._ctx.font = "30px Black Ops One";
-        this._ctx.fillStyle = 'black'
-        if (this.state === 0) {
-            this._ctx.font = "38px Black Ops One";
-            this._ctx.fillStyle = 'red'
-        };
-        this._ctx.textAlign = "center";
-        this._ctx.fillText(`Round ${this.round}`, this._ctx.canvas.width / 2, 30);
-        this._counter++;
-        this._deleteObstacle();
-        if (this.state === 2) {
-            this.sword.draw();
         }
     }
 
@@ -86,19 +66,18 @@ class Round {
         )
 
         this._ctx.font = "50px Black Ops One";
-        this._ctx.fillStyle = 'rgb(204, 33, 33)'
+        this._ctx.fillStyle = 'rgb(204, 33, 33)';
         this._ctx.textAlign = "left";
         this._ctx.fillText('Game over!', 40, 480);
 
         const divs = [...document.getElementsByClassName('deletable')];
-        divs.forEach(el => el.innerHTML = '')
+        divs.forEach(el => el.innerHTML = '');
 
         const button = document.getElementById('end-div');
-        button.innerHTML = '<a id="end" href="">Try again?</a>'
+        button.innerHTML = '<a id="end" href="">Try again?</a>';
 
         this._laughAudio.play();
     }
-
 
     drawYouWin() {
         this._ctx.drawImage(
@@ -110,31 +89,59 @@ class Round {
         );
 
         this._ctx.font = "50px Black Ops One";
-        this._ctx.fillStyle = 'rgb(30, 138, 2)'
+        this._ctx.fillStyle = 'rgb(30, 138, 2)';
         this._ctx.textAlign = "left";
         this._ctx.fillText('You win!', 40, 480);
 
         const divs = [...document.getElementsByClassName('deletable')];
-        divs.forEach(el => el.innerHTML = '')
+        divs.forEach(el => el.innerHTML = '');
 
         const button = document.getElementById('next-div');
-        button.innerHTML = '<a id="win" href="">Who wanna fight?</a>'
+        button.innerHTML = '<a id="win" href="">Who wanna fight?</a>';
     }
 
     helpChecker(warrior) {
-        if (!this.help && this.round > 1) {
-            if (!(this._objectCounter % 1500) && this._objectCounter) {
-                const helps = [new LifeHelp(this._ctx), new ProtectionHelp(this._ctx), new PaceHelp(this._ctx)];
-                this.help = helps[Math.floor(Math.random() * helps.length)];
-            }   
-        } else if (this.round > 1) {
-            this.help.draw();
-            if (this.help.colisionChecker(warrior)) {
-                this.help.power(warrior);
-                this.help = null;
-
-            }       
+        if (this.round > 1) {
+            if (!this.help) {
+                if (!(this._objectCounter % 1500) && this._objectCounter) {
+                    const helps = [new LifeHelp(this._ctx), new ProtectionHelp(this._ctx), new PaceHelp(this._ctx)];
+                    this.help = helps[Math.floor(Math.random() * helps.length)];
+                }   
+            } else {
+                this.help.draw();
+                if (this.help.colisionChecker(warrior)) {
+                    this.help.power(warrior);
+                    this.help = null;
+                }       
+            }
         }
+    }
+
+    _newObstacle() {
+        const obstacles = [new Apple(this._ctx), new Rock(this._ctx), new GiantRock(this._ctx), new House(this._ctx)];
+
+        if (this.state >= 1){
+            this._objectCounter++;
+            if (this.round === 5) {
+                if (!(this._tick % 20)) {
+                    const randomNumber = Math.floor(Math.random() * obstacles.length);
+                    this.obstacle.push(obstacles[randomNumber]);
+                }   
+            } else if (!(this._tick % obstacles[this.round - 1].apparitionRate)) {
+                this.obstacle.push(obstacles[this.round - 1]);
+            } 
+        } 
+    }
+
+    _drawRoundMenu() {
+        this._ctx.font = "30px Black Ops One";
+        this._ctx.fillStyle = 'black'
+        if (this.state === 0) {
+            this._ctx.font = "38px Black Ops One";
+            this._ctx.fillStyle = 'red'
+        };
+        this._ctx.textAlign = "center";
+        this._ctx.fillText(`Round ${this.round}`, this._ctx.canvas.width / 2, 30);
     }
 
     _deleteObstacle() {

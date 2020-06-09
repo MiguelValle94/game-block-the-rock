@@ -15,16 +15,15 @@ h1 {
     color: rgb(223, 201, 5);
     font-size: 60px;
     text-align: center;
-    float: left;
-}
-
-#logo {
-    width: 150px;
 }
 
 #small {
     font-size: 20px;
     padding: 0;
+}
+
+#logo {
+    width: 150px;
 }
 
 #videogame {
@@ -35,9 +34,15 @@ canvas {
     border: 1px solid black;
 }
 
+progress::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
 #warrior-life {
     height: 30px;
-    width: 240px;
+    width: 260px;
     position: absolute;
     left: 350px;
     top: 35px;
@@ -46,20 +51,9 @@ canvas {
     align-items: center;
 }
 
-#displayed {
-    height: 100px;
-    width: 180px;
-}
-
-progress::-webkit-progress-bar {
-    background-color: #eee;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-}
-
 #giant-life {
     height: 30px;
-    width: 240px;
+    width: 260px;
     position: absolute;
     right: 320px;
     top: 35px;
