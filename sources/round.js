@@ -2,7 +2,7 @@ class Round {
 
     constructor(ctx) {
         this._ctx = ctx;
-        this.round = 4;
+        this.round = 1;
         this._counter = 0;
         this._objectCounter = 0;
 
@@ -95,6 +95,8 @@ class Round {
 
         const button = document.getElementById('end-div');
         button.innerHTML = '<a id="end" href="">Try again?</a>'
+
+        this._laughAudio.play();
     }
 
 
@@ -120,12 +122,12 @@ class Round {
     }
 
     helpChecker(warrior) {
-        if (!this.help) {
-            if (this._objectCounter === 1000) {
+        if (!this.help && this.round > 1) {
+            if (!(this._objectCounter % 1500) && this._objectCounter) {
                 const helps = [new LifeHelp(this._ctx), new ProtectionHelp(this._ctx), new PaceHelp(this._ctx)];
                 this.help = helps[Math.floor(Math.random() * helps.length)];
             }   
-        } else {
+        } else if (this.round > 1) {
             this.help.draw();
             if (this.help.colisionChecker(warrior)) {
                 this.help.power(warrior);

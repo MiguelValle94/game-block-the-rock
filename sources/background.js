@@ -10,7 +10,7 @@ class Background {
         this._img.src = './img/grass.jpg';
 
         this._limitsImg = new Image();
-        this._limitsImg.src = './img/tree.png';
+        this._limitsImg.src = './img/trees.png';
 
         this._startImg = new Image();
         this._startImg.src = './img/startbackground.jpg';

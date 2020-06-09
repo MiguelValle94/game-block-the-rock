@@ -5,7 +5,12 @@ class ProtectionHelp extends Help {
     }
 
     power(warrior) {
-        console.log('protected')
+        warrior.w /= 1.5;
+        warrior.h /= 1.5;
+        setTimeout(() =>  {
+            warrior.w *= 1.5;
+            warrior.h *= 1.5;
+        }, 10000);
     }
 
 }
