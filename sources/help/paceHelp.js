@@ -5,6 +5,8 @@ class PaceHelp extends Help {
     }
 
     power(warrior) {
+        this._helpAudio.play();
+        
         warrior.vx *= 2;
         warrior.vy *= 2;
         setTimeout(() =>  {

@@ -113,7 +113,7 @@ class Warrior {
 
     centerPosition() {
         const colisionX = this.x <= this._ctx.canvas.width / 2 + 15 && this.x + this.w >= this._ctx.canvas.width / 2 - 15;
-        const colisionY = this.y <= this._ctx.canvas.height / 2 + 20 && this.y + this.h >= this._ctx.canvas.height / 2;
+        const colisionY = this.y <= this._ctx.canvas.height / 2 + 25 && this.y + this.h >= this._ctx.canvas.height / 2;
 
         return colisionX && colisionY;
     }
@@ -130,6 +130,17 @@ class Warrior {
         } else if (this.y + this.h >= this._ctx.canvas.height - 60 ) {
             this.y = this._ctx.canvas.height - 60 - this.h;
         }
+    }
+
+    setName = () => {
+        const nameForm = document.getElementById("fname").value;
+        const warriorDiv = document.getElementById('warrior-name');
+        
+        if (!nameForm) {
+            warriorDiv.innerText = 'WARRIOR'
+        } else {
+            warriorDiv.innerText = nameForm.toUpperCase();
+        }  
     }
 
     _drawLife() {

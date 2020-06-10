@@ -5,7 +5,7 @@ class Game {
 
         this.background = new Background(this._ctx);
         this._giant = new Giant(this._ctx);
-        this._warrior = new Warrior(this._ctx);
+        this.warrior = new Warrior(this._ctx);
         this._console = new Console(this._ctx);
         this._round = new Round(this._ctx);
 
@@ -17,6 +17,8 @@ class Game {
     }
 
     start() {
+        this._drawStartLife();
+
         this._intervalID = setInterval(() => {
             this._checkLimits();
             this._checkDeath();
@@ -27,7 +29,7 @@ class Game {
             this._draw();
             this._move();
 
-            this._round.helpChecker(this._warrior);
+            this._round.helpChecker(this.warrior);
             this._attackChecker();
             
         }, 1000 / 60); 
@@ -41,7 +43,7 @@ class Game {
         this.background.draw();
         this._giant.draw();  
         this._round.obstacle.forEach( obs => obs.drawShadow());
-        this._warrior.draw();
+        this.warrior.draw();
         this._round.obstacle.forEach( obs => obs.draw());
         this.background.drawMenu();
         this._round.draw();
@@ -53,14 +55,14 @@ class Game {
     }
 
     _checkLimits() {
-        this._warrior.checkLimits();
+        this.warrior.checkLimits();
     }
 
     _checkColisions() {
         this._round.obstacle.forEach(o => {
            if (o.damage) {
-                const colisionY = this._warrior.y <= o.y + o.h && this._warrior.y >= o.y + o.h / 3  && o.y >= o.finalY - this._warrior.h;
-                const colisionX = this._warrior.x < o.x + o.w && this._warrior.x + this._warrior.w > o.x;
+                const colisionY = this.warrior.y <= o.y + o.h && this.warrior.y >= o.y + o.h / 3  && o.y >= o.finalY - this.warrior.h;
+                const colisionX = this.warrior.x < o.x + o.w && this.warrior.x + this.warrior.w > o.x;
                 if (colisionY && colisionX) {
                     this._decreaseLife(o);
                 }
@@ -71,14 +73,14 @@ class Game {
     _decreaseLife(obstacle) {
         this._painAudio.play()
         obstacle.noCrash = false;
-        this._warrior.health -= obstacle.damage;
+        this.warrior.health -= obstacle.damage;
     }
 
     _attackChecker() {
-        this._warrior.drawAttack();
-        if (this._round.state === 2 && this._warrior.centerPosition()) {
-                this._warrior.attackCheck = true;
-                this._warrior.attack(this._giant);
+        this.warrior.drawAttack();
+        if (this._round.state === 2 && this.warrior.centerPosition()) {
+                this.warrior.attackCheck = true;
+                this.warrior.attack(this._giant);
                 this._round.state = 0;
                 this._round.usedSword = true;
                 this._console.phraseIndex = 0;
@@ -86,7 +88,7 @@ class Game {
     }
 
     _checkDeath() {
-        if (this._warrior.health <= 0) {
+        if (this.warrior.health <= 0) {
             this._gameOver();
         } else if (this._giant.health <= 0) {
             this._youWin();
@@ -103,20 +105,28 @@ class Game {
         setTimeout (() => {this._round.drawYouWin()}, 1000);
     }
 
+    _drawStartLife() {
+        const lifeBoxes = [...document.getElementsByClassName('hiden')];
+        lifeBoxes.forEach(el => el.className = 'displayed');
+
+        const names = [...document.getElementsByClassName('start-name')];
+        names.forEach(el => el.className = '');
+    }
+
     _setListeners() {
         document.addEventListener('keydown', e => {
             if (e.keyCode === UP) {
-                this._warrior.move('back');
-                this._warrior.animate();
+                this.warrior.move('back');
+                this.warrior.animate();
             } else if (e.keyCode === RIGHT) {
-                this._warrior.move('right');
-                this._warrior.animate();
+                this.warrior.move('right');
+                this.warrior.animate();
             } else if (e.keyCode === LEFT) {
-                this._warrior.move('left');
-                this._warrior.animate();
+                this.warrior.move('left');
+                this.warrior.animate();
             } else if (e.keyCode === DOWN) {
-                this._warrior.move('front');
-                this._warrior.animate();
+                this.warrior.move('front');
+                this.warrior.animate();
             }
         });
     }

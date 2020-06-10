@@ -88,10 +88,11 @@ class Round {
             this._ctx.canvas.height
         );
 
+        const warriorDiv = document.getElementById('warrior-name').innerText;
         this._ctx.font = "50px Black Ops One";
         this._ctx.fillStyle = 'rgb(30, 138, 2)';
         this._ctx.textAlign = "left";
-        this._ctx.fillText('You win!', 40, 480);
+        this._ctx.fillText(`${warriorDiv} you win!`, 40, 480);
 
         const divs = [...document.getElementsByClassName('deletable')];
         divs.forEach(el => el.innerHTML = '');

@@ -15,21 +15,23 @@
 
     <section id="videogame">
         <div id="warrior-life" class="deletable">
-            <span>WARRIOR</span>    
-            <progress id="warrior" class="displayed" max="100" value="100"></progress>
+            <span id="warrior-name"></span>    
+            <progress id="warrior" class="hiden" max="100" value="100"></progress>
         </div>
 
         <div id="giant-life" class="deletable">  
-            <progress id="giant" class="displayed" max="100" value="100"></progress>
-            <span>GIANT</span>  
+            <progress id="giant" class="hiden" max="100" value="100"></progress>
+            <span class="start-name">GIANT</span>  
         </div>
         
         <canvas id="canvas" width="700" height="550">
         </canvas> 
 
-        <div id="start" class='button'>SAVE HUMANITY</div>
+        <div id="start" class='button start-menu'>SAVE HUMANITY</div>
         <div id="end-div" class='button'></div>
         <div id="next-div" class='button'></div>
+    
+        <input type="text" id="fname" class="start-menu" name="fname" placeholder="WARRIOR NAME" maxlength="8">
     </section>
 
     <img id="logo" src="img/favicon.png" alt="swords icon">
@@ -37,6 +39,7 @@
     <audio id="laugh" src="audio/laugh.mp3"></audio>
     <audio id="sword" src="audio/sword.mp3"></audio>
     <audio id="pain" src="audio/pain.mp3"></audio>
+    <audio id="help" src="audio/help.mp3"></audio>
     <audio id="bground" src="audio/bground.mp3" loop="true"></audio>
 
     <script src="./sources/constants.js"></script>

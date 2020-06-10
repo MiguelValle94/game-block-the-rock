@@ -8,10 +8,11 @@ class Help {
         
         this._w = 20;
         this._h = 20;
-        this._x = 50 + Math.random() * (this._ctx.canvas.width - 50);
+        this._x = 50 + Math.random() * (this._ctx.canvas.width - 100);
         this._y = LIMIT_Y + Math.floor(Math.random() * (this._ctx.canvas.height - LIMIT_Y - 100)); 
 
         this._counter = 0;
+        this._helpAudio = document.getElementById('help');
     }
 
     draw() {

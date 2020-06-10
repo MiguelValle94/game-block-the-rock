@@ -5,6 +5,8 @@ class ProtectionHelp extends Help {
     }
 
     power(warrior) {
+        this._helpAudio.play();
+        
         warrior.w /= 1.5;
         warrior.h /= 1.5;
         setTimeout(() =>  {

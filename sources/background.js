@@ -43,7 +43,7 @@ class Background {
         this._ctx.font = "20px Roboto";
         this._ctx.fillStyle = 'black'
         this._ctx.textAlign = "center";
-        this._ctx.fillText(`${START_PHRASE}`, this._ctx.canvas.width / 2, 200, 600);
+        this._ctx.fillText(`${START_PHRASE}`, this._ctx.canvas.width / 2, 150, 600);
     }
 
     _drawGrass() {

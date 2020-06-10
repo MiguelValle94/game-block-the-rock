@@ -5,6 +5,8 @@ class LifeHelp extends Help {
     }
 
     power(warrior) {
+        this._helpAudio.play();
+        
         if (warrior.health <= 75) {
             warrior.health += 25;
         } else {
