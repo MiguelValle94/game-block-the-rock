@@ -149,5 +149,18 @@ class Round {
 
     _deleteObstacle() {
         this.obstacle = this.obstacle.filter( obs => obs.noFloor && obs.noCrash);
+
+        this.obstacle = this.obstacle.sort((a, b) => {
+
+                if (a.finalY < b.finalY) {
+                    return -1;
+                } else if (a.finalY > b.finalY) {
+                    return 1;
+                }
+                return 0;
+            
+        });
     }
+
+
 }

@@ -115,7 +115,7 @@ class Game {
 
     _drawStartLife() {
         const lifeBoxes = [...document.getElementsByClassName('hiden')];
-        lifeBoxes.forEach(el => el.className = 'displayed');
+        lifeBoxes.forEach(el => el.className = 'life-border');
 
         const names = [...document.getElementsByClassName('start-name')];
         names.forEach(el => el.className = '');

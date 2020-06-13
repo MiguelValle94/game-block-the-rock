@@ -150,13 +150,13 @@ class Warrior {
     }
 
     _deleteLifeWhenAttack() {
-        const lifeBoxes = [...document.getElementsByClassName('displayed')];
+        const lifeBoxes = [...document.getElementsByClassName('life-border')];
         lifeBoxes.forEach(el => el.className = 'hiden');
     }
 
     _drawLifeAfterAttack() {
         const lifeBoxes = [...document.getElementsByClassName('hiden')];
-        lifeBoxes.forEach(el => el.className = 'displayed');
+        lifeBoxes.forEach(el => el.className = 'life-border');
     }
 
     _attackPreparation() {
