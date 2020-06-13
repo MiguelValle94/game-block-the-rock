@@ -16,7 +16,7 @@ class Console {
     draw(round) {
         this._drawBackground();
         this._drawPhrase(round);
-        this._counter++
+        this.counter++
     }
 
     _drawBackground() {

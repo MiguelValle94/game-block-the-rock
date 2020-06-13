@@ -14,9 +14,9 @@ In each round the giant will throw more objects and these objets will be bigger 
 After some time it will appear a sword, move your warrior toward the sword and you will attack the giant.
 
 ### Helps:
-Life help: it will increase your life :heart:
-Pace help: you will run faster :shoe:
-Size help: you will be smaller :tophat:
+- Life help: it will increase your life :heart:
+- Pace help: you will run faster :shoe:
+- Size help: you will be smaller :tophat:
 
 ## Devices:
 Computer, you may need a keyboard and in order to see the whole screen it may be better to use a computer
