@@ -42,7 +42,7 @@ class Background {
 
     drawStart() {
         this._ctx.drawImage(this._startImg, 0, 0, this._w, this._h);
-        this._ctx.drawImage(this._instructionsImg, 350 - 60, 380, 100, 100);
+        this._ctx.drawImage(this._instructionsImg, 350 - 50, 380, 100, 100);
 
         this._ctx.font = "20px Roboto";
         this._ctx.fillStyle = 'black'

@@ -3,7 +3,7 @@ class Giant {
     constructor(ctx) {
         this._ctx = ctx;
 
-        this.health = 100;
+        this.health =100;
 
         this._img = new Image();
         this._img.src = './img/legs.png';
