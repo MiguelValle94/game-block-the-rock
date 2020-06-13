@@ -1,6 +1,6 @@
 # BLOCK THE ROCK
 
-[Play the game!](http://somecoolsite.com)
+[Play the game!](https://miguelvalle94.github.io/game-block-the-rock/)
 
 ## How to play:
 The aim of this game is to defeat the **giant**. 

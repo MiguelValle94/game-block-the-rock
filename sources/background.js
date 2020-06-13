@@ -20,7 +20,7 @@ class Background {
 
         this._htpImg = new Image();
         this._htpImg.src = './img/howplay.png';
-        this._drawHTP()
+        this._drawHTP();
 
         this._limitX = 0;
         this._limitY = 20;
