@@ -18,6 +18,10 @@ class Background {
         this._instructionsImg = new Image();
         this._instructionsImg.src = './img/instructions.png';
 
+        this._htpImg = new Image();
+        this._htpImg.src = './img/howtoplay.png';
+        this._drawHTP();
+
         this._limitX = 0;
         this._limitY = 20;
         this._limitW = this._w;
@@ -38,7 +42,7 @@ class Background {
 
     drawStart() {
         this._ctx.drawImage(this._startImg, 0, 0, this._w, this._h);
-        this._ctx.drawImage(this._instructionsImg, 350 - 60, 400, 100, 100);
+        this._ctx.drawImage(this._instructionsImg, 350 - 60, 380, 100, 100);
 
         this._ctx.font = "20px Roboto";
         this._ctx.fillStyle = 'black'
@@ -52,5 +56,16 @@ class Background {
 
     _drawLimits() {
         this._ctx.drawImage(this._limitsImg, this._limitX, this._limitY, this._limitW + 100, this._limitH);        
+    }
+
+    _drawHTP() {
+        const inst = document.getElementById('instructions')
+        inst.onclick = () => {
+            this._ctx.drawImage(this._htpImg, 0, 0, this._w, this._h);
+            const deleteStart = [...document.getElementsByClassName('start-menu')];
+            deleteStart.forEach(el => el.remove());
+            const button = document.getElementById('back-to-menu-div');
+            button.innerHTML = '<a id="back-to-menu" href="">--Back to Menu--</a>';
+        }        
     }
 }

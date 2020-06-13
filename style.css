@@ -86,7 +86,7 @@ a {
     padding: 20px;
     position: absolute;
     left: 550px;
-    top: 320px;
+    top: 300px;
     text-decoration: none;
     border: 2px solid white;
     color: rgb(253, 253, 253);
@@ -103,7 +103,7 @@ a {
     padding: 20px;
     position: absolute;
     left: 550px;
-    top: 250px;
+    top: 230px;
     width: 235px;
     text-align: center;
 }
@@ -126,4 +126,30 @@ a {
 
 .hiden {
     width: 0;
+}
+
+#instructions {
+    position: absolute;
+    left: 590px;
+    top: 500px;
+    color: rgb(21, 80, 190);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#instructions:hover {
+    color: rgb(5, 36, 93);
+}
+
+#back-to-menu {
+    position: absolute;
+    left: 590px;
+    top: 550px;
+    color: rgb(21, 80, 190);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#back-to-menu:hover {
+    color: rgb(5, 36, 93);
 }

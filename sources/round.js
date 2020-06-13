@@ -2,7 +2,7 @@ class Round {
 
     constructor(ctx) {
         this._ctx = ctx;
-        this.round = 1;
+        this.round = 2;
         this._tick = 0;
         this._objectCounter = 0;
         this.state = 0; //0-Nothing 1-Objects 2-Sword

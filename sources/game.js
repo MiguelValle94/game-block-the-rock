@@ -105,6 +105,10 @@ class Game {
         setTimeout (() => {this._round.drawYouWin()}, 1000);
     }
 
+    _displayHTP() {
+        // this.background.
+    }
+
     _drawStartLife() {
         const lifeBoxes = [...document.getElementsByClassName('hiden')];
         lifeBoxes.forEach(el => el.className = 'displayed');
