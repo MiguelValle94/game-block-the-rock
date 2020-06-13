@@ -9,13 +9,9 @@ window.onload = () => {
 
     const startBtn = document.getElementById('start');
     const startMenu = [...document.getElementsByClassName('start-menu')];
-    const bgoundAudio = document.getElementById('bground');
-    bgoundAudio.volume = 0.4;
     
     startBtn.onclick = function() {
         newG.start();
-        newG.warrior.setName();
         startMenu.forEach(el => el.remove());
-        bgoundAudio.play();
     } 
 }

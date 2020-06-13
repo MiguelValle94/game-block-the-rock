@@ -130,11 +130,12 @@ a {
 
 #instructions {
     position: absolute;
-    left: 590px;
+    left: 595px;
     top: 500px;
     color: rgb(21, 80, 190);
     font-weight: bold;
     font-size: 20px;
+    text-align: center;
 }
 
 #instructions:hover {
@@ -143,11 +144,12 @@ a {
 
 #back-to-menu {
     position: absolute;
-    left: 590px;
+    left: 595px;
     top: 550px;
     color: rgb(21, 80, 190);
     font-weight: bold;
     font-size: 20px;
+    text-align: center;
 }
 
 #back-to-menu:hover {

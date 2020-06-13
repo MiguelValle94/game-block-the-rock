@@ -86,6 +86,7 @@ class Warrior {
     }
 
     drawAttack() {
+        
         this._attackPreparation();
         this._ctx.fillStyle = 'black';
         if (this.attackCheck) {
@@ -97,7 +98,7 @@ class Warrior {
                 this._ctx.canvas.width, 
                 this._ctx.canvas.height
             );
-
+            
             this._deleteLifeWhenAttack();
 
             if (!(this.count % 5)){
@@ -132,7 +133,7 @@ class Warrior {
         }
     }
 
-    setName = () => {
+    setName() {
         const nameForm = document.getElementById("fname").value;
         const warriorDiv = document.getElementById('warrior-name');
         

@@ -2,7 +2,7 @@ class Round {
 
     constructor(ctx) {
         this._ctx = ctx;
-        this.round = 2;
+        this.round = 1;
         this._tick = 0;
         this._objectCounter = 0;
         this.state = 0; //0-Nothing 1-Objects 2-Sword
@@ -21,6 +21,7 @@ class Round {
         this._imgGO.src = './img/gameover.jpg';
 
         this._laughAudio = document.getElementById('laugh');
+        this._youWin = document.getElementById('you-win');
     }
 
     draw() {
@@ -48,7 +49,7 @@ class Round {
             this.usedSword = false;
         }
 
-        if (this.state === 0) {
+        if (this.state === 0 && this.round < 6) {
             setTimeout(() => {
                 this.state = 1;
                 this._laughAudio.play();
@@ -80,6 +81,8 @@ class Round {
     }
 
     drawYouWin() {
+        this._youWin.play();
+        
         this._ctx.drawImage(
             this._imgYW, 
             0, 
@@ -88,11 +91,10 @@ class Round {
             this._ctx.canvas.height
         );
 
-        const warriorDiv = document.getElementById('warrior-name').innerText;
         this._ctx.font = "50px Black Ops One";
         this._ctx.fillStyle = 'rgb(30, 138, 2)';
         this._ctx.textAlign = "left";
-        this._ctx.fillText(`${warriorDiv} you win!`, 40, 480);
+        this._ctx.fillText('You win!', 40, 480);
 
         const divs = [...document.getElementsByClassName('deletable')];
         divs.forEach(el => el.innerHTML = '');
