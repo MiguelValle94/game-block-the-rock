@@ -1,6 +1,6 @@
-# game-block-the-rock
+# BLOCK THE ROCK
 
-[](http://somecoolsite.com)
+[Play the game!](http://somecoolsite.com)
 
 ## How to play:
 The aim of this game is to defeat the **giant**. 
@@ -21,4 +21,4 @@ Size help: you will be smaller :rescue worker’s helmet:
 # Devices:
 Computer, you may need a keyboard and in order to see the whole screen it may be better to use a computer
 
-#### Inspired in Attack on Titan. 
+#### Inspired on Attack on Titan. 
